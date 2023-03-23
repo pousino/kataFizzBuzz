@@ -16,6 +16,17 @@ public class FizzBuzz {
         }
     }
     
+    public String fizzBuzzAvecRefacto(int number){
+        String result="";
+        if (number % 3 == 0) {
+            result+="Fizz";
+        }
+        if (number % 5 == 0) {
+            result+="Buzz";
+        }
+       return result.isEmpty() ? String.valueOf(number) : result;
+    }
+    
     public static String mapToMessage(Integer i) {
         if (i % 15 == 0) {
             return "FizzBuzz";
