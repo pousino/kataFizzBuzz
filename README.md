@@ -6,8 +6,7 @@ L’objectif consiste de faire une boucle de 1 à 100 :
 •	chaque chiffre divisible par 3 il faut afficher le mot Fizz,
 •	si le chiffre et divisible par 5 on affiche Buzz, 
 •	si le chiffre est divisible par 3 et par 5 il faut afficher FizzBuzz 
-•	sinon on affiche le chiffre.
-**
+•	sinon on affiche le chiffre
 
 # Nous allons développer en TDD 
 La boucle se fera côté classes de tests dans un premier temps. 
