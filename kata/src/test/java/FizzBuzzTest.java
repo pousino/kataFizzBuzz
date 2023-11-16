@@ -7,58 +7,58 @@ import static org.junit.Assert.assertEquals;
 
 public class FizzBuzzTest {
     
-    FizzBuzz fizzBuzz = new FizzBuzz();
+    private FizzBuzz fizzBuzz;
     
-    @Test
-    public void testWithNumberOne() {
-        fizzBuzz.fizzBuzz(1);
-        assertEquals("Test avec valeur 1","1", fizzBuzz.fizzBuzz(1));
+    @Before
+    public void init() {
+        fizzBuzz = new FizzBuzz();
     }
     
     @Test
-    public void testWithNumberTwo() {
-        fizzBuzz.fizzBuzz(2);
-        assertEquals("Test avec valeur 2","2", fizzBuzz.fizzBuzz(2));
+    public void testWithNumberOne() {
+        String result = fizzBuzz.check(1);
+        
+        assertEquals("Erreur",  "1", result);
+        
     }
     
     @Test
     public void testWithNumberThree() {
-        fizzBuzz.fizzBuzz(3);
-        assertEquals("Test avec Fizz","Fizz", fizzBuzz.fizzBuzz(3));
+        String result = fizzBuzz.check(3);
+        assertEquals("Erreur",  "Fizz", result);
     }
     
     @Test
-    public void testAll(){
-        for (int i = 1; i <= 100; i++) {
-            fizzBuzz.fizzBuzz(i);
-            if (i % 3 == 0 && i % 5 == 0) {
-                assertEquals("FizzBuzz", fizzBuzz.fizzBuzz(i));
-            } else if (i % 3 == 0) {
-                assertEquals("Fizz", fizzBuzz.fizzBuzz(i));
-            } else if (i % 5 == 0) {
-                assertEquals("Buzz", fizzBuzz.fizzBuzz(i));
-            } else {
-                assertEquals(String.valueOf(i), fizzBuzz.fizzBuzz(i));
-            }
+    public void testWithNumberFive() {
+        String result = fizzBuzz.check(5);
+        
+        assertEquals("Erreur",  "Buzz", result);
+    }
+    
+    
+    @Test
+    public void testWithNumberFifteen() {
+        String result = fizzBuzz.check(15);
+        
+        assertEquals("Erreur",  "FizzBuzz", result);
+    }
+    
+    @Test
+    public void testAll() {
+        IntStream.rangeClosed(1, 100).forEach(i -> test(i));
+    }
+    
+    private void test(int i) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            assertEquals("Erreur",  "FizzBuzz", fizzBuzz.check(i));
+        } else if (i % 3 == 0) {
+            assertEquals("Erreur",  "Fizz", fizzBuzz.check(i));
+        } else if (i % 5 == 0) {
+            assertEquals("Erreur",  "Buzz", fizzBuzz.check(i));
+        } else {
+            assertEquals("Erreur",  String.valueOf(i), fizzBuzz.check(i));
         }
     }
-    
-    @Test
-    public void testAllNumbers() {
-        IntStream.rangeClosed(1, 100).forEachOrdered(i -> {
-            fizzBuzz.fizzBuzz(i);
-            if (i % 3 == 0 && i % 5 == 0) {
-                assertEquals("FizzBuzz", fizzBuzz.fizzBuzz(i));
-            } else if (i % 3 == 0) {
-                assertEquals("Fizz", fizzBuzz.fizzBuzz(i));
-            } else if (i % 5 == 0) {
-                assertEquals("Buzz", fizzBuzz.fizzBuzz(i));
-            } else {
-                assertEquals(String.valueOf(i), fizzBuzz.fizzBuzz(i));
-            }
-        });
-    }
-    
     
     
 }
